@@ -1,0 +1,223 @@
+﻿@model JobPortalLibrary.JobSeeker.SeekerUser
+
+@{
+    ViewBag.Title = "jobdetails";
+    Layout = "~/Views/Shared/JobSeeker_Layout.cshtml";
+}
+<style>
+    .tabprofile {
+        height: 190px;
+        padding: 20px;
+    }
+
+    .tabprofile1 {
+        height: 190px;
+        padding: 20px;
+        margin-top: 10px;
+    }
+
+    .tabprofile2 {
+        height: 190px;
+        padding: 20px;
+        margin-top: 25%;
+        margin-bottom: -9%;
+    }
+
+    .shear {
+        height: 25px;
+        width: 32px;
+    }
+    .swal-button swal-button--cancel{
+        display:none;
+    }
+</style>
+<div class="tabprofile">
+    <div class="card" style="width:67rem;height:170px; margin-left:100px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey">
+
+
+        <dl class="dl-horizontal" style=" margin-left:30px;margin-top:10px">
+            <dd style="font-size:20px;color:black">
+                @Html.HiddenFor(modelItem => Model.PostJobCode)
+            </dd>
+            <dd style="font-size:25px;color:black">
+                @Html.DisplayFor(modelItem => Model.JobTitle)
+            </dd>
+            <dd style="font-size: 25px; color: black; margin-left: 89%; margin-top: -36px;">
+                <img class="img-seeker" src="~/Content/images/@Model.CompanyLogo" height="75" width="75">
+            </dd>
+            <dd style="font-size: 17px; color: darkslategray;margin-top:-55px;">
+                @Html.DisplayFor(modelItem => Model.CompanyName)
+            </dd>
+            <dd style="font-size: 12px; color: darkslategray;margin-top:-10px;">
+                <i class='fas fa-briefcase text-primary me-2'> @Html.DisplayFor(modelItem => Model.TotalExperience)</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                ||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-inr text-primary me-2"> ₹@Html.DisplayFor(modelItem => Model.CurrentSalary)</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                || &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-map-marker-alt text-primary me-2"> @Html.DisplayFor(modelItem => Model.Location)</i>
+            </dd>
+            <dd style="font-size: 14px; color: darkslategray;margin-top:-8px;">
+                @Html.DisplayFor(modelItem => Model.JobType)
+            </dd>
+            <hr style="margin-top:8px;" />
+            <dd style="font-size: 14px; color: darkslategray;margin-top:-8px;">
+                <i class="far fa-calendar-alt text-primary me-2">
+                    <label>Posted:</label>
+                    @Html.DisplayFor(modelItem => Model.StartDate)
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;||&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>Openings:</label>
+                    @Html.DisplayFor(modelItem => Model.NoOfEmployees)
+                </i>
+            </dd>
+            <div class="form-group" style="margin-left:900px;margin-top:-25px;">
+                <div class="col-md-offset-2 col-md-9">
+                    <a class="btn btn-primary ApplyJobs" style="margin-top:-11px" href="javascript:;" data-id="@Model.PostJobCode">Apply</a>
+                </div>
+            </div>
+        </dl>
+
+    </div>
+</div>
+
+<div class="tabprofile1">
+    <div class="card" style="width:66rem;height:500px; margin-left:110px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey">
+
+        <dl class="dl-horizontal" style=" margin-left:30px;margin-top:10px">
+            <div class="profile-image">
+                <dd style="font-size:22px;color:black">
+                    @Html.HiddenFor(modelItem => Model.PostJobCode)
+                </dd>
+            </div>
+            <div class="company">
+                <label style="font-size:25px;color:black">Job description </label>
+                <dd style="font-size: 15px; color: var(--N700)">
+                    @Html.DisplayFor(modelItem => Model.JobDescription)
+                </dd>
+            </div>
+            <div class="company">
+                <dd style="font-size: 15px; color: var(--N700); margin-top:30px;">
+                    <label style="font-size: 16px; color: black;">Industry Type: </label>
+                    @Html.DisplayFor(modelItem => Model.Industry)
+                </dd>
+            </div>
+            <div class="company">
+                <dd style="font-size: 15px; color: var(--N700); margin-top:10px;">
+                    <label style="font-size: 16px; color: black;">Employment Type:</label>
+                    <label>Full Time, Permanent</label>
+                    @*@Html.DisplayFor(modelItem => Model.Industry)*@
+                </dd>
+            </div>
+            <div class="company">
+                <dd style="font-size: 15px; color: var(--N700); margin-top:10px;">
+                    <label style="font-size: 16px; color: black;">Role Category:</label>
+                    @Html.DisplayFor(modelItem => Model.JobCategory)
+                </dd>
+            </div>
+            <div class="company">
+                <dd style="font-size: 15px; color: var(--N700); margin-top:10px;">
+                    <label style="font-size: 16px; color: black;">Required qualification:</label>
+                    @Html.DisplayFor(modelItem => Model.RequiredQualificationId)
+                </dd>
+            </div>
+            <hr />
+            <div class="company">
+                <dd style="margin-top: -10px;">
+                    <a href="https://facebook.com/sharer.php?url=@Session["url"]" target="_blank">
+                        <img class="shear" src="~/Content/images/facebook.jpg" />
+                    </a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=@Session["url"]" target="_blank">
+                        <img class="shear" src="~/Content/images/Linkdin.jpg" />
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?url=@Session["url"]" target="_blank">
+                        <img class="shear" src="~/Content/images/Twitter.jpg" />
+                    </a>
+                </dd>
+            </div>
+        </dl>
+
+    </div>
+
+</div>
+@*<button class="swal-button swal-button--cancel">Cancel</button>*@
+<div class="tabprofile2">
+    <div class="card" style="width:66rem;height:170px; margin-left:115px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey">
+
+        <dl class="dl-horizontal" style=" margin-left:30px;margin-top:10px">
+            <div class="company">
+                <label style="font-size: 16px; color: black;">About company:</label>
+                <dd style="font-size: 15px; color: var(--N700);">
+                    @Html.DisplayFor(modelItem => Model.AboutCompany)
+                </dd>
+            </div>
+            <div class="company">
+                <label style="font-size: 16px; color: black;">Address:</label>
+                <dd style="font-size: 15px; color: var(--N700);">
+                    @Html.DisplayFor(modelItem => Model.CorrespondenceAddress)
+                </dd>
+            </div>
+        </dl>
+
+    </div>
+</div>
+<div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" style="color:lightgreen; font-size:xx-large"></h3>
+
+                <span aria-hidden="true">&times;</span>
+
+            </div>
+            <div class="modal-body">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Sweet.js"></script>        
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".ApplyJobs").click(function () {
+            var $buttonClicked = $(this);
+            var id = $buttonClicked.attr('data-id')
+            /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+            $.ajax({
+                type: "GET",
+                url: "/JobSeeker/CheckApply",
+                data: { postjobcode: id },
+                //contentType: "application/json; charset=utf-8",
+                //dataType: "html",
+                success: function (messege) {
+                    if (messege.data == "Apply") {
+                        swal({
+                            title: "You Have Already Applied for this Job..!!",
+                            
+                            icon: "warning",
+                            buttons: true,
+                            //dangerMode: true,
+                        })
+                    }
+                    else if (messege.data == "NotApply") { 
+                        $.ajax({
+                            type: "GET",
+                            url: "/JobSeeker/ApplyJobs",
+                            data: { postjobcode: id },
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "html",
+                            success: function (data) {
+                                $("#partialModal").find(".modal-body").html(data);
+                                $("#partialModal").modal('show');
+                            },
+                            failure: function (response) {
+                                alert("method failed")
+                            }
+
+                        });
+
+                    }
+                }
+            });
+        });
+    });
+</script>

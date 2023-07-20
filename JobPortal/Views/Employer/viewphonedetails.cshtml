@@ -1,0 +1,44 @@
+﻿@model JobPortalLibrary.Employer.EmployerUser
+
+
+
+
+                <div class="modal-body">
+                    <div>
+                        <dl class="dl-horizontal">
+                            <div class="row">
+                                <dt>
+                                    @Html.HiddenFor(model => model.PostJobCode)
+                                </dt>
+
+                                <dd>
+                                    @Html.HiddenFor(model => model.PostJobCode)
+                                </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SeekerName)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.SeekerName)
+                                </dd>
+                            </div>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.ContactNo)
+                            </dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.ContactNo)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Alternativecontact)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Alternativecontact)
+                            </dd>
+
+                        </dl>
+                    </div>
+                  </div>
+
+

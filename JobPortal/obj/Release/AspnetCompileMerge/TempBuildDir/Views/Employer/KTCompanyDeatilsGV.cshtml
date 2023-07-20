@@ -1,0 +1,106 @@
+﻿@model JobPortalLibrary.Employer.EmployerUser
+
+@{
+    ViewBag.Title = "KTCompanyDeatilsGV";
+    Layout = "~/Views/Shared/Employer_Layout.cshtml";
+}
+
+<h2>CompanyDetails</h2>
+<br />
+
+<button style="color: white; width:180px;height: 45px; border-radius: 12px; font-weight: 500;border-color:transparent; font-size: 15px; line-height: 10px; text-align: center; display: flex; align-items: center; justify-content: center;background-color:royalblue">
+    <a style="color: white;" href="@Url.Action("CompanyRegistration","Employer")"> Company Registration</a>
+</button>
+<br />
+
+
+<table class="table table-hover" style="border:thick; width:75%; margin-left:0px">
+    <tr style="background-color: #435ebe; color: white;">
+
+        <th>
+            @Html.HiddenFor(model => model.CompanyId)
+        </th>
+        <th>
+            @Html.HiddenFor(model => model.Employercode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+
+        @*<th>
+            @Html.DisplayNameFor(model => model.CompanyEmail)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyWebsite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HRName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HRNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HREmail)
+        </th>
+
+
+        <th style="width:30px;"></th>
+    </tr>
+
+    @foreach (var item in Model.LTUser)
+    {
+        <tr>
+            <td>
+                @Html.HiddenFor(modelItem => item.CompanyId)
+            </td>
+            <td>
+                @Html.HiddenFor(modelItem => item.Employercode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.CompanyEmail)
+            </td>*@
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyWebsite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactNo)
+            </td>
+
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.HRName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HRNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HREmail)
+            </td>
+
+
+
+
+
+
+
+
+            <td>
+                <a class="bi bi-pencil-fill" style="color:blue" href="@Url.Action("GetCompanyDetails","Employer", new { CompanyId = item.CompanyId })"></a>
+                @*@Html.ActionLink("Edit", "GetCompanyDetails", new { CompanyId = item.CompanyId }) |*@
+                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                @*@Html.ActionLink("Delete", "KTDeleteCompany", new { CompanyId = item.CompanyId })*@
+                <a class="bi bi-trash-fill" style="color:red" href="@Url.Action("KTDeleteCompany","Employer", new { CompanyId = item.CompanyId })"></a>
+            </td>
+        </tr>
+    }
+
+</table>

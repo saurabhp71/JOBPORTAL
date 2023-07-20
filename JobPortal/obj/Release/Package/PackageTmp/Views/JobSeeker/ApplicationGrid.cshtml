@@ -1,0 +1,74 @@
+﻿@model JobPortalLibrary.JobSeeker.SeekerUser
+
+@{
+    ViewBag.Title = "ApplicationGrid";
+    Layout = "~/Views/Shared/JobSeeker_Layout.cshtml";
+}
+
+<table class="table table-hover">
+    <tr style="background-color: #00B074;">
+        <th>
+            @Html.HiddenFor(model => model.Seekercode)
+        </th>
+        <th>
+            @Html.HiddenFor(model => model.AppliedJobID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JobTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppliedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResumePDF)
+        </th>
+        <th>
+            Download
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            Delete
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.user)
+    {
+        <tr>
+
+            <td>
+                @Html.HiddenFor(modelItem => item.Seekercode)
+            </td>
+            <td>
+                @Html.HiddenFor(modelItem => item.AppliedJobID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppliedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResumePDF)
+            </td>
+            <td>
+                <a href="~/Content/PDF Files/@item.ResumePDF">Download</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>                        
+                <a href="@Url.Action("IsDelete","JobSeeker",new{ AppliedJobID = item.AppliedJobID })"><img src="~/Content/img/Delet Icon.png" style="width: 20px; height: 20px;" /></a>             
+            </td>
+        </tr>
+    }
+</table>

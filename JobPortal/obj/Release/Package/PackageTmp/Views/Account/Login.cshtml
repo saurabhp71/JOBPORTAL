@@ -1,0 +1,415 @@
+﻿@model JobPortalLibrary.Controller.AccountUser
+@{
+    ViewBag.Title = "Login";
+    //  Layout = "~/Views/Shared/Account_Layout.cshtml";
+}
+
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.validate.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+
+    <style>
+        body {
+            margin: 0;
+            color: #6a6f8c;
+            background: #1d2026;
+            font: 600 16px/18px 'Open Sans',sans-serif;
+        }
+
+        *, :after, :before {
+            box-sizing: border-box
+        }
+
+        .clearfix:after, .clearfix:before {
+            content: '';
+            display: table
+        }
+
+        .clearfix:after {
+            clear: both;
+            display: block
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .login-wrap {
+            width: 100%;
+            margin: auto;
+            max-width: 525px;
+            min-height: 800px;
+            position: relative;
+/**/            background: url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
+/**/
+            background-color:transparent;
+            box-shadow: 0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
+        }
+
+        .login-html {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            padding: 90px 70px 50px 70px;
+              background: rgba(40,57,101,.9);
+      /*       background-color: rgba(0,0,0, 0.4);*/
+           /* background-color: rgb(155,81,224);*/
+            
+        }
+
+            .login-html .sign-in-htm,
+            .login-html .sign-up-htm {
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                position: absolute;
+                transform: rotateY(180deg);
+                backface-visibility: hidden;
+                transition: all .4s linear;
+            }
+
+            .login-html .sign-in,
+            .login-html .sign-up,
+            .login-form .group .check {
+                display: none;
+            }
+
+            .login-html .tab,
+            .login-form .group .label,
+            .login-form .group .button {
+                text-transform: uppercase;
+            }
+
+            .login-html .tab {
+                font-size: 22px;
+                margin-right: 15px;
+                padding-bottom: 5px;
+                margin: 0 15px 10px 0;
+                display: inline-block;
+                border-bottom: 2px solid transparent;
+            }
+
+            .login-html .sign-in:checked + .tab,
+            .login-html .sign-up:checked + .tab {
+                color: #fff;
+                border-color: #1161ee;
+            }
+
+        .login-form {
+            min-height: 345px;
+            position: relative;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+            .login-form .group {
+                margin-bottom: 15px;
+            }
+
+                .login-form .group .label,
+                .login-form .group .input,
+                .login-form .group .button {
+                    width: 100%;
+                    color: #fff;
+                    display: block;
+                }
+
+                .login-form .group .input,
+                .login-form .group .button {
+                    border: none;
+                    padding: 15px 20px;
+                    border-radius: 25px;
+                    background: rgba(255,255,255,.1);
+                }
+
+                .login-form .group input[data-type="password"] {
+                    text-security: circle;
+                    -webkit-text-security: circle;
+                }
+
+                .login-form .group .label {
+                    color: #aaa;
+                    font-size: 12px;
+                }
+
+                .login-form .group .button:hover {
+                    background: #1161ee;
+                    
+                }
+
+                .login-form .group label .icon {
+                    width: 15px;
+                    height: 15px;
+                    border-radius: 2px;
+                    position: relative;
+                    display: inline-block;
+                    background: rgba(255,255,255,.1);
+                }
+
+                    .login-form .group label .icon:before,
+                    .login-form .group label .icon:after {
+                        content: '';
+                        width: 10px;
+                        height: 2px;
+                        background: #fff;
+                        position: absolute;
+                        transition: all .2s ease-in-out 0s;
+                    }
+
+                    .login-form .group label .icon:before {
+                        left: 3px;
+                        width: 5px;
+                        bottom: 6px;
+                        transform: scale(0) rotate(0);
+                    }
+
+                    .login-form .group label .icon:after {
+                        top: 6px;
+                        right: 0;
+                        transform: scale(0) rotate(0);
+                    }
+
+                .login-form .group .check:checked + label {
+                    color: #fff;
+                }
+
+                    .login-form .group .check:checked + label .icon {
+                        background: #1161ee;
+                    }
+
+                        .login-form .group .check:checked + label .icon:before {
+                            transform: scale(1) rotate(45deg);
+                        }
+
+                        .login-form .group .check:checked + label .icon:after {
+                            transform: scale(1) rotate(-45deg);
+                        }
+
+        .login-html .sign-in:checked + .tab + .sign-up + .tab + .login-form .sign-in-htm {
+            transform: rotate(0);
+        }
+
+        .login-html .sign-up:checked + .tab + .login-form .sign-up-htm {
+            transform: rotate(0);
+        }
+
+        .hr {
+            height: 2px;
+            margin: 60px 0 50px 0;
+            background: rgba(255,255,255,.2);
+        }
+
+        .foot-lnk {
+            text-align: center;
+        }
+        /* Google*/
+        .loginBtn--google {
+            font-family: "Roboto", Roboto, arial, sans-serif;
+            background: #DD4B39;
+        }
+
+            .loginBtn--google:before {
+                border-right: #BB3F30 1px solid;
+                background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_google.png') 6px 6px no-repeat;
+                align-content: center;
+            }
+
+            .loginBtn--google:hover,
+            .loginBtn--google:focus {
+                background: #E74B37;
+            }
+        .bi-google {
+            background: #dd4b39;
+            color: white;
+        }
+        .label{
+            color:white;
+        }
+   
+    </style>
+</head>
+
+@*<body id="img" style="background-image:url('../../content/images/whatsapp image 2023-06-08 at 13.40.40.jpg'); ">*@
+    <body id="img" style="background: linear-gradient(90deg, #C7C5F4, #776BCC); ">
+
+        <div class="login-wrap">
+            <div class="login-html">
+                <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+                <div class="login-form">
+                    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+
+                    {
+                        <div class="sign-in-htm">
+                            <div class="group">
+                                <label for="user" class="label" style="color:whitesmoke;">Username</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.EmailId1, new { htmlAttributes = new { @class = "input", placeholder = "Email Id" } })
+                                    @Html.ValidationMessageFor(model => model.EmailId1, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="group">
+                                <label for="pass" class="label" style="color:whitesmoke;">Password</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Password1, new { htmlAttributes = new { @class = "input", type = "password", placeholder = "Password" } })
+
+                                    @Html.ValidationMessageFor(model => model.Password1, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+                            <div class="group">
+                                <input id="check" type="checkbox" class="check" checked>
+                                <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                            </div>
+                            <div class="group">
+                                <input type="submit" value=" Sign In" class="button" />
+                            </div>
+                            <div class="foot-lnk">
+                                <a href="@Url.Action("forgotpassword","Account")">Forgot Password?</a>
+                            </div>
+                            <p style="color:white;margin-left:180px;">OR</p>
+                            <div style="margin-left:165px;">
+
+                                <a href="@ViewBag.response">
+
+                                    <img src="~/Content/images/icons8-google-48.png" />
+
+                                </a>
+
+                            </div>
+
+
+                        </div>
+
+                    }
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+
+                    {
+                        <div class="sign-up-htm">
+                            <div class="group">
+                                <label for="user" class="label" style="color:whitesmoke;">Username</label>
+                                <div class="col-md-15">
+                                    @Html.EditorFor(model => model.SeekerName, new { htmlAttributes = new { PlaceHolder = "Display Name", @class = "input" } })
+                                    @Html.ValidationMessageFor(model => model.SeekerName, "", new { @class = "text-danger",@style= "color:red;" })
+                                </div>
+                            </div>
+                            <div class="group">
+                                <label for="pass" class="label" style="color:whitesmoke;">EmailId</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { PlaceHolder = "Email", @class = "input" } })
+                                    @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger", @style = "color:red;" })
+                                </div>
+                            </div>
+                            <div class="group">
+                                <label for="pass" class="label" style="color:whitesmoke;">Contact Number</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { PlaceHolder = "ContactNo", @class = "input" } })
+                                    @Html.ValidationMessageFor(model => model.ContactNo, "", new { @class = "text-danger", @style = "color:red;" })
+                                </div>
+                            </div>
+                            <div class="group">
+                                <label for="pass" class="label" style="color:whitesmoke;">Password</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { PlaceHolder = "Password", @class = "input" } })
+                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger", @style = "color:red;" })
+                                </div>
+                            </div>
+                            <div class="group">
+                                <label for="pass" class="label" style="color:whitesmoke;">Re-Enter Password</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.RePassword, new { htmlAttributes = new { PlaceHolder = "Confirm-Password", @class = "input" } })
+                                    @Html.ValidationMessageFor(model => model.RePassword, "", new { @class = "text-danger", @style = "color:red;" })
+                                </div>
+                            </div>
+                            <div class="group">
+                                <label for="pass" class="label" style="color:whitesmoke;">Category</label>
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(model => model.Category, new SelectList(ViewBag.list), "--Select--", htmlAttributes: new { @class = "input", @style = "color:black;" })
+                                    @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger", @style = "color:red;" })
+                                </div>
+                            </div>
+                            <div class="group">
+                                <input type="submit" class="button" value="Sign Up">
+                            </div>
+                            <div class="hr"></div>
+                            <div class="foot-lnk">
+                                <label for="tab-1" style="color:red">@ViewBag.Message</label>
+
+                            </div>
+                            @*<div class="foot-lnk">
+                                <label for="tab-1">Already Member?</label>
+                            </div>*@
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+
+    </body>
+</html>
+@*<div class="login-wrap">
+        <div class="login-html">
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group">
+                        <label for="user" class="label">Username</label>
+                        <input id="user" type="text" class="input">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Password</label>
+                        <input id="pass" type="password" class="input" data-type="password">
+                    </div>
+                    <div class="group">
+                        <input id="check" type="checkbox" class="check" checked>
+                        <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                    </div>
+                    <div class="group">
+                        <input type="submit" class="button" value="Sign In">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <a href="#forgot">Forgot Password?</a>
+                    </div>
+                </div>
+                <div class="sign-up-htm">
+                    <div class="group">
+                        <label for="user" class="label">Username</label>
+                        <input id="user" type="text" class="input">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Password</label>
+                        <input id="pass" type="password" class="input" data-type="password">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Repeat Password</label>
+                        <input id="pass" type="password" class="input" data-type="password">
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Email Address</label>
+                        <input id="pass" type="text" class="input">
+                    </div>
+                    <div class="group">
+                        <input type="submit" class="button" value="Sign Up">
+                    </div>
+                    <div class="hr"></div>
+                    <div class="foot-lnk">
+                        <label for="tab-1">Already Member?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@

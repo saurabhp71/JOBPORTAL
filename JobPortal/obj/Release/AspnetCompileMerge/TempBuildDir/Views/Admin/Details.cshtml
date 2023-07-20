@@ -1,0 +1,284 @@
+﻿@model JobPortalLibrary.Admin.AdminUser
+@*@Approvel SweetAlert@*@
+<!--<script src="~/Scripts/Sweet.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".sweetApprove").click(function () {
+            var PostJobCode = $(this).attr("data-id");
+            $.ajax({
+                url: "/Admin/Update/",
+                data: { "PostjobCode": PostJobCode },
+                success: function (Status) {
+                    swal({
+                        title: "This Job has been Approved..",
+                        button: "ok",
+                        // dangerMode: true,
+
+                    })
+                        .then(function () {
+                            window.location.href = "/Admin/ApplicationApprovel";
+                        })
+
+                }
+            })
+        });
+    });</script>-->
+
+
+<div>
+    <div class="card" style="width:66rem;height:300px; margin-left:115px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey">
+        <div style="margin-left:40px">
+            <h1 style="background-color:lightseagreen;
+margin-bottom: 20px; color: #1c4980;padding-top:30px;padding-bottom:30px; font-size: 40px; overflow-wrap: break-word;font-family:Inter,sans-serif!important;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Job Details
+            </h1>
+
+
+            <div class="tabprofile1">
+
+
+                <dl class="dl-horizontal" style=" margin-left:30px;margin-top:10px">
+                    <div class="company">
+                        <dt>
+                            @Html.HiddenFor(model => model.PostJobCode)
+                        </dt>
+
+
+                        <dd>
+                            @Html.HiddenFor(model => model.PostJobCode)
+                        </dd>
+                        <dd>
+                            @Html.HiddenFor(model => model.CompanyLogo)
+
+                            <img class="img-seeker" src="~/Content/images/@Model.CompanyLogo" style="width:90px; height:90px;" />
+                            <p style="font-size:25px;color:black;margin-left:130px;margin-top:-90px">
+                                @Html.DisplayFor(model => model.JobTitle)
+                            </p>
+
+
+                            <p style="font-size: 15px; color: darkslategray;margin-top:55px;margin-left:130px;margin-top:-20px">
+                                <img _ngcontent-d2c-frontend-c257 src="https://d8it4huxumps7.cloudfront.net/uploads/images/63b957e2059fc_org.svg" alt="Organisation Icon" width="22" height="16" loading="lazy">
+                                @Html.DisplayFor(modelItem => Model.CompanyName)
+                            </p>
+                            <p style="font-size: 15px; color: darkslategray;margin-top:55px;margin-left:130px;margin-top:0px">
+                                <img _ngcontent-d2c-frontend-c257="" src="https://d8it4huxumps7.cloudfront.net/uploads/images/63b9549418def_location.svg" alt="Location Icon" width="15" height="16" loading="lazy">
+                                @Html.DisplayFor(modelItem => Model.Address)
+                            </p>
+                            @*<p style="text-align:center">
+
+
+                                <button class="btn btn-outline-success" style="background-color:greenyellow;width:100px;height:40px;border:groove;border-radius:15px;">
+                                    <a class="sweetApprove " style="color:white;" href="#" data-id="@Model.PostJobCode"> Approve </a>
+                                </button>
+                                <button class="btn btn-outline-danger" style="background-color: red; width: 100px; height: 40px; border: groove; border-radius: 15px; ">
+                                    <a class="RejectionReason" style="color:white" href="javascript:;" data-id="@Model.PostJobCode"> Reject </a>
+                                </button>
+
+                            </p>*@
+                        </dd>
+
+                    </div>
+                </dl>
+
+            </div>
+        </div>
+
+
+
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <div class="tabprofile2">
+            <div class="card" style="width:65rem; margin-left:15px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey">
+                <dl class="dl-horizontal" style="margin-left:50px; font-size:20px;border-left: 3px dashed #0073e6;">
+
+                    <div class="row">
+                        <b style="color:black;">
+                        <dt>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DisplayNameFor(model => model.JobDescription)&nbsp;&nbsp;&nbsp;:
+                        </dt>
+                        </b>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <dd>
+                            @Html.DisplayFor(model => model.JobDescription)
+                        </dd>
+                    </div>
+                    <br />
+                    <br />
+
+
+                </dl>
+
+            </div>
+
+        </div>
+        <div class="tabprofile2">
+            <div class="card" style="width:65rem; margin-left:15px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey">
+                <dl class="dl-horizontal" style="margin-left:50px; font-size:20px;">
+                    <h1>Additional Information</h1>
+                    <br />
+
+                    <div class="card" style="width:800px;height:130px; margin-left:15px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey">
+                        <dt class="dl-horizontal" style="margin-left:50px; font-size:20px;">
+                            <h4>What are the important dates & deadlines?</h4>
+                        </dt>
+
+
+                        <dt>
+                            @*<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Ftime-flies-calendar&psig=AOvVaw1AgCrwPxtBZtcEyryA7EWu&ust=1684415604429000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCNCsnZ-3_P4CFQAAAAAdAAAAABAE" />*@
+                            <b>  @Html.DisplayNameFor(model => model.ApplicationEndDate)</b>
+                        </dt>
+
+                        <dd style="margin-top:10px;">
+                            @Html.DisplayFor(model => model.ApplicationEndDate)
+                        </dd>
+
+                        <dt style="margin-top:-50px; margin-left:450px">
+                            <b>@Html.DisplayNameFor(model => model.ExpectedJoiningDate)</b>
+                        </dt>
+
+
+                        <dd style="margin-left:450px; margin-top:10px;">
+
+                            @Html.DisplayFor(model => model.ExpectedJoiningDate)
+
+                        </dd>
+
+                    </div>
+                    <br />
+                    <br />
+
+                    <div class="card" style="width: 400px; height: 100px; border-radius: 10px; box-shadow: 5px 6px 8px 5px lightgrey">
+                        <dt style="margin-left:50px;">
+                            <br />
+                            <b> @Html.DisplayNameFor(model => model.Location)</b>
+                            <br />
+
+                            @Html.DisplayFor(model => model.Address)
+                            <p style="margin-left: 230px; margin-top: -60px;">
+                                <img _ngcontent-d2c-frontend-c262="" src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/stipend/location.svg" alt="Location Icon" width="78" height="78" loading="lazy">
+                            </p>
+                        </dt>
+
+                    </div>
+                    <div class="card" style="width: 400px; height: 100px; border-radius: 10px; margin-top: -100px; margin-left: 500px; box-shadow: 5px 6px 8px 5px lightgrey">
+                        <dt style="margin-left:150px;">
+                            <br />
+                        <dt style="margin-left:40px;">
+                            <b> @Html.DisplayNameFor(model => model.TotalExperience)</b>
+                        </dt>
+
+                        <dd>
+
+                            @Html.DisplayFor(model => model.TotalExperience)
+                            <p style="margin-left:230px;margin-top:-60px;">
+                                <img _ngcontent-d2c-frontend-c173="" src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/stipend/experience.svg" alt="Experience Icon" width="78" height="78" loading="lazy">
+                            </p>
+                        </dd>
+
+                    </div>
+
+                    <div class="card" style="width: 400px; height: 100px; border-radius: 10px; margin-top: 50px; margin-left: 0px; box-shadow: 5px 6px 8px 5px lightgrey">
+                        <dt style="margin-left:50px;">
+                            <br />
+                        <dt style="margin-left:40px;">
+                            <b s> @Html.DisplayNameFor(model => model.Salary)</b>
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Salary)/-
+                            <p style="margin-left:230px;margin-top:-60px;">
+                                <img _ngcontent-d2c-frontend-c173="" src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/stipend/salary.svg" alt="Salary/Stipend" width="78" height="78" loading="lazy">
+                            </p>
+                        </dd>
+                    </div>
+                    <div class="card" style="width: 400px; height: 100px; border-radius: 0px; margin-top: -100px; margin-left: 500px; box-shadow: 5px 6px 8px 5px lightgrey">
+                        <dt style="margin-left:150px;">
+                            <br />
+                        <dt style="margin-left:40px;">
+                            <b>  @Html.DisplayNameFor(model => model.JobType)</b>
+                        </dt>
+
+
+                        <dd>
+                            @Html.DisplayFor(model => model.JobType)
+                            <p style="margin-left:230px;margin-top:-50px;">
+                                <img _ngcontent-d2c-frontend-c173="" src="https://d8it4huxumps7.cloudfront.net/uploads/images/unstop/stipend/job-timing.svg" alt="Job Type / Timing" width="78" height="78" loading="lazy">
+                            </p>
+                        </dd>
+                    </div>
+                </dl>
+                <br />
+                <br />
+                <br />
+            </div>
+
+
+        </div>
+
+        <a style="color:blue;" href="https://facebook.com/sharer.php?url=@Session["url"]"> <i class="bi bi-facebook"></i></a>
+
+        &nbsp; &nbsp; &nbsp;
+        <a style="color:blue" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=@Session["url"]"> <i class="bi bi-linkedin"></i></a>
+        &nbsp; &nbsp; &nbsp;
+        <a style="color:deepskyblue" href="https://twitter.com/intent/tweet?url=@Session["url"]"> <i class="bi bi-twitter"></i></a>
+
+    </div>
+
+</div>
+
+@*<div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
+        <div class="modal-dialog  modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" style="color:black; font-size:xx-large">Post Job Details</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+
+<script type="text/javascript">
+        $(function () {
+            $(".RejectionReason").click(function () {
+                var $buttonClicked = $(this);
+                var id = $buttonClicked.attr('data-id')
+                /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+                $.ajax({
+                    type: "GET",
+                    url: "/Admin/RejectionReason",
+                    data: { PostJobCode: id },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        $("#partialModal").find(".modal-body").html(response);
+                        $("#partialModal").modal('show');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+</script>*@
+
+

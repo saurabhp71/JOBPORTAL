@@ -1,0 +1,117 @@
+﻿@model JobPortalLibrary.Admin.AdminUser
+
+@{
+    ViewBag.Title = "EditPlan";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+@section Scripts {
+
+    <link href="~/Scripts/chosen.min.css" rel="stylesheet" />
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+
+    <script>$(function () {
+            $("#BenifitList").chosen({
+                width: "37%"
+            });
+        });</script>
+}
+
+<h2>UpdatePlan</h2>
+
+@using (Html.BeginForm("EditPlan", "Admin", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div style="margin-left:400px">
+        <div class="form-horizontal">
+            <div style="margin-left:-100px">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SubscriptionName, "Subscription Name", htmlAttributes: new { @class = "control-label col-md-6" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.SubscriptionName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.SubscriptionName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Benefit, "Benefits", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-10">
+                        @Html.ListBoxFor(m => m.BenifitList, new MultiSelectList(ViewBag.BenifitList, "Value", "Text"), new { id = "BenifitList", Multiple = "multiple" })
+                        @Html.ValidationMessageFor(model => model.Benefit, "", new { @class = "text-danger" })
+                        <br /><br />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="margin-left:-100px">
+                @Html.LabelFor(model => model.SubscriptionDetails, "Subscription Details", htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-4">
+                    @*@Html.EditorFor(model => model.SubscriptionDetails, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <textarea id="SubscriptionDetails" name="SubscriptionDetails" rows="4" cols="47">@ViewBag.SubscriptionDetails</textarea>
+                    @Html.ValidationMessageFor(model => model.SubscriptionDetails, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-left:400px; margin-top:-325px">
+            <div class="form-group">
+                @Html.LabelFor(model => model.PlanPricing, "Plan Pricing", htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.PlanPricing, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.PlanPricing, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Offer, htmlAttributes: new { @class = "control-label col-md-6" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Offer, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Offer, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                @Html.LabelFor(model => model.SubscriptionDuration, "Subscription Duration", htmlAttributes: new { @class = "control-label col-md-5" })
+                <div class="col-md-8">
+                    @Html.DropDownListFor(model => model.SubscriptionDuration, new SelectList(ViewBag.DurationList), "--Select--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SubscriptionDuration, "", new { @class = "text-danger" })
+                    <br />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-4" style="margin-top:5px;margin-left:800px">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink("Back to List", "Plangrid")
+        </div>
+    </div>
+}
+
+@*<div>
+        @Html.LabelFor(model => model.IsOffer, "Offer", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group">
+            Yes
+
+            @Html.RadioButtonFor(model => model.IsOffer, "Yes", new { @class = "Fixed" })
+
+            No
+
+            @Html.RadioButtonFor(model => model.IsOffer, "No", new { @class = "Flexible" })
+
+        </div>
+    </div>*@
+@*<div class="item form-group">
+        @Html.LabelFor(model => model.IsOffer, "Is Offer", htmlAttributes: new { @class = "col-form-label col-md-3 col-sm-3 label-align required" })
+        <div class="col-md-6 col-sm-6 ">
+            @Html.Label("Yes")
+            @Html.RadioButtonFor(Model => Model.IsOffer, "Yes")
+            @Html.Label("No")
+            @Html.RadioButtonFor(model => model.IsOffer, "No")
+            @Html.ValidationMessageFor(model => model.IsOffer, "", new { @class = "text-danger" })
+        </div>
+    </div>*@

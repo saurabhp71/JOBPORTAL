@@ -1,0 +1,36 @@
+﻿@model JobPortalLibrary.Employer.EmployerUser
+<style>
+    .btnhover:hover {
+        background: #2a74de;
+        color:#fff;
+        color:white;
+    }
+</style>
+<div>
+    <b><p style="font-size: 20px; color: #1c4980;">Plan Details</p></b>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            @Html.HiddenFor(model => model.SubscriptionId)
+        </dd>
+        <dd style="font-size: 25px; color: #1c4980;" >
+            <b>  @Html.DisplayFor(model => model.SubscriptionName)</b>
+            <div style="margin-left: 270px; margin-top: -35px" >
+                <b style="font-size: 25px; color: #1c4980; ">  ₹ @Html.DisplayFor(model => model.OfferedPrice) </b>/<div style="font-size: 20px; color: #1c4980; margin-left: 100px; margin-top: -35px "> @Html.DisplayFor(model => model.SubscriptionDuration)</div>
+            </div>
+            </dd>
+        <dd>
+            @Html.HiddenFor(model => model.PlanPricing)
+        </dd>
+
+    </dl>
+    <p>
+        <button class="btnhover" style="margin-left:20px;color: white; width:120px;height: 40px; border-radius: 12px; font-weight: 500;border-color:transparent; font-size: 14px; line-height: 10px; text-align: center; display: flex; align-items: center; justify-content: center; margin-top: 10px;">
+            <a href="@Url.Action("PlanDetails","Employer")"  class="btnhover">Change Plan &#x2197;</a>
+        </button>
+        <button class="btnhover" style="margin-left: 350px; color: royalblue; width: 90px; height: 40px; border-radius: 12px; font-weight: 500; border-color: transparent; font-size: 14px; line-height: 17px; text-align: center; display: flex; align-items: center; justify-content: center; ">
+            <a href="@Url.Action("AddPaymentDetails", "Employer", new {subscriptionid = @Model.SubscriptionId,PlanPricing=Model.PlanPricing,OfferedPrice=Model.OfferedPrice})"  class="btnhover">Continue</a> 
+        </button>
+    </p>
+</div>
+

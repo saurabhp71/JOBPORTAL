@@ -1,0 +1,461 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!-- theme meta -->
+    <meta name="theme-name" content="quixlab" />
+
+    <title>Job Portal</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="20x20" href="Content/Admin/images/favicon.png">
+
+    <!-- Pignose Calender -->
+    <link href="~/Content/Admin/plugins/pignose.calendar.min.css" rel="stylesheet" />
+
+    <!-- Chartist -->
+    <link href="~/Content/Admin/plugins/chartist.min.css" rel="stylesheet" />
+    <link href="~/Content/Admin/plugins/chartist-plugin-tooltip.css" rel="stylesheet" />
+    <!-- Custom Stylesheet -->
+
+    <link href="~/Content/Admin/style.css" rel="stylesheet" />
+
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"></script>
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet"   />*@
+    @*<link href="~/Content/Admin/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet" />
+        <link href="~/Content/Admin/css/style.css" rel="stylesheet" />*@
+
+</head>
+<body>
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+
+        Nav header start
+        <!--**********************************
+        ***********************************-->
+        <div class="nav-header">
+            <div class="brand-logo">
+                <a href="index.html">
+                    <b class="logo-abbr"><img src="~/Content/Admin/images/logo.png" alt=""> </b>
+                    <span class="logo-compact"><img src="~/Content/Admin/images/logo-compact.png" alt=""></span>
+                    <span class="brand-title">
+                        <b> <p style="color:white; font:200px">ADMIN</p></b>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+        <!--**********************************
+            Header start
+        ***********************************-->
+        @*<div class="header">
+            <div class="header-content clearfix">
+
+                <div class="nav-control">
+                    <div class="hamburger">
+                        <span class="toggle-icon"><i class="icon-menu"></i></span>
+                    </div>
+                </div>
+                <div class="header-left">
+                    <div class="input-group icons">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                        </div>
+                        <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
+                        <div class="drop-down animated flipInX d-md-none">
+                            <form action="#">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <ul class="clearfix">
+                        <li class="icons dropdown">
+                            <a href="javascript:void(0)" data-toggle="dropdown">
+                                <i class="mdi mdi-email-outline"></i>
+                                <span class="badge badge-pill gradient-1">3</span>
+                            </a>
+                            <div class="drop-down animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-heading d-flex justify-content-between">
+                                    <span class="">3 New Messages</span>
+                                    <a href="javascript:void()" class="d-inline-block">
+                                        <span class="badge badge-pill gradient-1">3</span>
+                                    </a>
+                                </div>
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li class="notification-unread">
+                                            <a href="javascript:void()">
+                                                <img class="float-left mr-3 avatar-img" src="~/Content/Admin/images/avatar/1.jpg" alt="">
+                                                <div class="notification-content">
+                                                    <div class="notification-heading">Saiful Islam</div>
+                                                    <div class="notification-timestamp">08 Hours ago</div>
+                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="notification-unread">
+                                            <a href="javascript:void()">
+                                                <img class="float-left mr-3 avatar-img" src="~/Content/Admin/images/avatar/2.jpg" alt="">
+                                                <div class="notification-content">
+                                                    <div class="notification-heading">Adam Smith</div>
+                                                    <div class="notification-timestamp">08 Hours ago</div>
+                                                    <div class="notification-text">Can you do me a favour?</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <img class="float-left mr-3 avatar-img" src="~/Content/Admin/images/avatar/3.jpg" alt="">
+                                                <div class="notification-content">
+                                                    <div class="notification-heading">Barak Obama</div>
+                                                    <div class="notification-timestamp">08 Hours ago</div>
+                                                    <div class="notification-text">Hi Teddy, Just wanted to let you ...</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <img class="float-left mr-3 avatar-img" src="~/Content/Admin/images/avatar/4.jpg" alt="">
+                                                <div class="notification-content">
+                                                    <div class="notification-heading">Hilari Clinton</div>
+                                                    <div class="notification-timestamp">08 Hours ago</div>
+                                                    <div class="notification-text">Hello</div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="icons dropdown">
+                            <a href="javascript:void(0)" data-toggle="dropdown">
+                                <i class="mdi mdi-bell-outline"></i>
+                                <span class="badge badge-pill gradient-2">3</span>
+                            </a>
+                            <div class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
+                                <div class="dropdown-content-heading d-flex justify-content-between">
+                                    <span class="">2 New Notifications</span>
+                                    <a href="javascript:void()" class="d-inline-block">
+                                        <span class="badge badge-pill gradient-2">5</span>
+                                    </a>
+                                </div>
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li>
+                                            <span class="mr-3 avatar-icon bg-success-lighten-2"><i class="icon-present"></i></span>
+                                            <div class="notification-content">
+                                                <h6 class="notification-heading">Events near you</h6>
+                                                <span class="notification-text">Within next 5 days</span>
+                                            </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="icon-present"></i></span>
+                                                <div class="notification-content">
+                                                    <h6 class="notification-heading">Event Started</h6>
+                                                    <span class="notification-text">One hour ago</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <span class="mr-3 avatar-icon bg-success-lighten-2"><i class="icon-present"></i></span>
+                                                <div class="notification-content">
+                                                    <h6 class="notification-heading">Event Ended Successfully</h6>
+                                                    <span class="notification-text">One hour ago</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="icon-present"></i></span>
+                                                <div class="notification-content">
+                                                    <h6 class="notification-heading">Events to Join</h6>
+                                                    <span class="notification-text">After two days</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="icons dropdown d-none d-md-flex">
+                            <a href="javascript:void(0)" class="log-user" data-toggle="dropdown">
+                                <span>English</span>  <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
+                            </a>
+                            <div class="drop-down dropdown-language animated fadeIn  dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li><a href="javascript:void()">English</a></li>
+                                        <li><a href="javascript:void()">Dutch</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="icons dropdown">
+                            <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                                <span class="activity active"></span>
+                                <img src="~/Content/Admin/images/user/1.png" height="40" width="40" alt="">
+                            </div>
+                            <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
+                                <div class="dropdown-content-body">
+                                    <ul>
+                                        <li>
+                                            <a href="app-profile.html"><i class="icon-user"></i> <span>Profile</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void()">
+                                                <i class="icon-envelope-open"></i> <span>Inbox</span> <div class="badge gradient-3 badge-pill gradient-1">3</div>
+                                            </a>
+                                        </li>
+
+                                        <hr class="my-2">
+                                        <li>
+                                            <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock Screen</span></a>
+                                        </li>
+                                        <li><a href="@Url.Action("Logout","Employer")"><i class="icon-key"></i> <span>Logout</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>*@
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <div class="nk-sidebar">
+            <div class="nk-nav-scroll">
+                <ul class="metismenu" id="menu">
+                    <!--<li>
+    <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+        <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+    </a>
+    <ul aria-expanded="false">
+        <li><a href="@Url.Action("view","Admin")">Home 1</a></li>-->
+                    <!-- <li><a href="./index-2.html">Home 2</a></li> -->
+                    <!--</ul>
+
+    </li>-->
+                    <li>
+                       
+
+                        <a href="@Url.Action("view","Admin")" aria-expanded="false">
+                            @* <a href="@Url.Action("RPAdminEmployeGrid","Admin")">*@
+                            <i class="fa fa-user"> </i>
+                            <span class="nav-text"><b><img style="width:25px;height:25px" src="~/Content/images/samples/images.png" />&nbsp; Dashboard</b></span>
+                            @*</a>*@
+                        </a>
+                    </li>
+                    <br />
+
+
+                    <li>
+                        <a href="@Url.Action("SiteEarningE","Admin")" aria-expanded="false" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fsearch%2Frupee&psig=AOvVaw16MSKqivY-jawbWXEiOMPT&ust=1686479782035000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCKD7sfXAuP8CFQAAAAAdAAAAABAE">
+                            @* <a href="@Url.Action("RPAdminEmployeGrid","Admin")">*@
+                            <i class="fa fa-user"> </i>
+
+                            <span class="nav-text"><b> <img style="width:25px;height:25px" src="~/Content/images/samples/istockphoto-1153024228-170667a.jpg" />Employer Site Earning</b></span>
+                            @*</a>*@
+                        </a>
+                    </li>
+                    <br />
+
+
+
+                    <li>
+                        <a href="@Url.Action("RPAdminJobsGrid","Admin")" aria-expanded="false">
+                            <i class="fa fa-briefcase"></i><span class="nav-text"><b><img style="width:25px;height:25px" src="~/Content/images/samples/download (1).png" /> &nbsp; Jobs</b></span>
+                        </a>
+                    </li>
+
+                    <!--<li>
+    <a href="@Url.Action("Jobseekargrid","Admin")" aria-expanded="false">-->
+                    @* <a href="@Url.Action("RPAdminEmployeGrid","Admin")">*@
+                    <!--<i class="fa fa-user"> </i>
+    <span class="nav-text">JobSeeker</span>-->
+                    @*</a>*@
+                    <!--</a>
+    </li>-->
+
+
+
+                    <br />
+                    <li>
+                        <a href="@Url.Action("RPAdminEmployeGrid","Admin")" aria-expanded="false">
+                            @* <a href="@Url.Action("RPAdminEmployeGrid","Admin")">*@
+                            <i class="fa fa-user"> </i>
+                            <span class="nav-text"><b><img style="width:30px;height:30px" src="~/Content/images/samples/an-inclusive-workplace-employees-protection-filled-outline-icon-illustration-color-editable-eps-10-free-vector.jpg" /> Employer</b></span>
+                            @*</a>*@
+                        </a>
+                    </li>
+                    <br />
+                
+
+                    <li>
+                        <a href="@Url.Action("RPCompanyGridview","Admin")" aria-expanded="false">
+                            @*<a href="@Url.Action("RPCompanyGridview","Admin")">*@
+                            <i class="fa fa-industry"></i>
+                            <span class="nav-text"><b><img style="width:30px;height:30px" src="~/Content/images/samples/9c8d7421604a039734dc6e93cdeea4fb.jpg" />Company Review</b></span>
+                            @*</a>*@
+                        </a>
+                    </li>
+                    <br />
+
+                    <li>
+                        <a href="@Url.Action("Plangrid","Admin")" aria-expanded="false">
+
+                            <i class="icon-badge menu-icon"></i><span class="nav-text"><b><img style="width:15px;height:15px" src="~/Content/images/samples/download (2).png" />Add/Manage Subscriptions</b></span>
+                        </a>
+                       
+                    </li>
+                    <br />
+                    <li>
+                        <a href="@Url.Action("Logout","Admin")" aria-expanded="false">
+
+                            <i class="icon-badge menu-icon"></i><span class="nav-text"><b><img style="width:25px;height:25px" src="~/Content/images/samples/images.jpeg" />&nbsp; LogOut</b></span>
+                        </a>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        @*</div>
+                </div>
+            </div>*@
+
+
+
+
+        @RenderBody()
+   
+
+       
+        <!-- #/ container -->
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+            </div>
+        </div>
+        <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+    <!--**********************************
+        Scripts
+    ***********************************-->
+
+    <script src="~/Content/Admin/js/common.min.js"></script>
+
+    <script src="~/Content/Admin/js/custom.min.js"></script>
+    <script src="~/Content/Admin/js/settings.js"></script>
+    <script src="~/Content/Admin/js/gleek.js"></script>
+    <script src="~/Content/Admin/js/styleSwitcher.js"></script>
+
+    <!-- Chartjs -->
+    <script src="~/Content/Admin/plugins/Chart.bundle.min.js"></script>
+    <!-- Circle progress -->
+    <script src="~/Content/Admin/plugins/circle-progress.min.js"></script>
+    <!-- Datamap -->
+    <script src="~/Content/Admin/plugins/index.js"></script>
+    <script src="~/Content/Admin/plugins/topojson.min.js"></script>
+    <script src="~/Content/Admin/plugins/datamaps.world.min.js"></script>
+    <!-- Morrisjs -->
+    <script src="~/Content/Admin/plugins/raphael.min.js"></script>
+    <script src="~/Content/Admin/plugins/morris.min.js"></script>
+    <!-- Pignose Calender -->
+    <script src="~/Content/Admin/plugins/moment.min.js"></script>
+    <script src="~/Content/Admin/plugins/pignose.calendar.min.js"></script>
+    <!-- ChartistJS -->
+    <script src="~/Content/Admin/plugins/chartist.min.js"></script>
+    <script src="~/Content/Admin/plugins/chartist-plugin-tooltip.min.js"></script>
+    <script src="~/Content/Admin/js/dashboard-1.js"></script>
+
+
+    @*<script src="~/Content/js/bootstrap.bundle.min.js"></script>
+        <script src="~/Content/js/main.js"></script>
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script src="~/Scripts/jquery.dataTables.min.js"></script>
+        <script src="~/Scripts/dataTables.bootstrap4.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#Rita").dataTable(
+                    {
+                        "lengthMenu": [10, 20, 40, 60, 80],
+                        "dom": '<"dt-buttons"Bfli>rtp',
+                        "paging": true,
+                        "autoWidth": false,
+                        "fixedHeader": true,
+
+                    });
+
+
+            });
+        </script>*@
+    <script src="~/Content/Admin/js/main.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    @*<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('#example').DataTable();
+        });
+    </script>*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+
+</body>
+</html>

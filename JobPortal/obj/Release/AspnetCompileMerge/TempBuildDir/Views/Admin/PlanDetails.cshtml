@@ -1,0 +1,201 @@
+﻿@model JobPortalLibrary.Admin.AdminUser
+
+@{
+    ViewBag.Title = "PlanDetails";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>PlanDetails</h2>
+
+<div style="margin-left:400px">
+
+    <!--<hr />
+    <div class="card">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.HiddenFor(model => model.SubscriptionId)
+            </dt>
+
+            <dd>
+                @Html.HiddenFor(model => model.SubscriptionId)
+            </dd>
+
+            <div style="margin-left:200px;">
+                <div class="row">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SubscriptionName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SubscriptionName)
+                    </dd>
+
+                </div>
+                <div class="row">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Benefits)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Benefits)
+                    </dd>
+
+                </div>
+                <div class="row">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SubscriptionDetails)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SubscriptionDetails)
+                    </dd>
+
+                </div>
+                <div class="row">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.SubscriptionDuration)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.SubscriptionDuration)
+                    </dd>
+                </div>-->
+    @*<div style="margin-left:500px;margin-top:-240px">*@
+    <!--<div class="row">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.PlanPricing)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.PlanPricing)
+                        </dd>
+                    </div>
+
+                    <div class="row">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Offer)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Offer)
+                        </dd>
+                    </div>
+
+                    <div class="row">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.OfferedPrice)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.OfferedPrice)
+                        </dd>
+                    </div>
+                    <dd>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">CANCEL</button>
+                    </dd>
+
+            </dl>
+
+            <p>
+
+                @Html.ActionLink("Back to List", "Plangrid")
+            </p>
+
+
+        </div>
+
+    </div>-->
+    <dl class="dl-horizontal">
+
+        <div class="col">
+            <div class="tabprofile">
+                <div class="card d-flex dynamic-card mb-1" style="width: calc(30% - 10px); margin: 5px; border-radius: 10px; box-shadow: 0 0 16px #b7b7b82e; position: relative; overflow: hidden; color: #1c4980; font-size: 15px; overflow-wrap: break-word; ">
+                    <div style="background: linear-gradient(90deg,#9F5EF1 0%,rgba(186,131,255,0) 100%); content:''; position: absolute; top: 0; left: 0; width: 100%; height: 8px;">
+
+                    </div>
+                    <dl>
+                        <div style="font-weight: 700; font-size: 22px; line-height: 140%; color: #1c4980; border-bottom: 1px solid #DDE5EA; padding: 0 35px; display: flex;
+flex-direction: column; justify-content: center; color: #1c4980; font-size: 25px; overflow-wrap: break-word;">
+                            &nbsp;&nbsp;
+                            <dd>
+                                @Html.HiddenFor(model => model.SubscriptionId)
+                            </dd>
+
+
+                            <dd>
+                                <b>
+                                    @Html.DisplayFor(model => model.SubscriptionName)
+                                </b>
+                                <div style="font-size:15px;">
+                                    @Html.DisplayFor(model => model.SubscriptionDetails)
+                                </div>
+                            </dd>
+
+                            @*<dd style="font-size:15px;">
+                                    @Html.DisplayFor(modelItem => item.SubscriptionDetails)
+                                </dd>*@
+
+                        </div>
+                        <br />
+                        <dd>
+                            <div style="font-size: 20px; color: #1c4980; text-align: center;">
+                                <del>  ₹ @Html.DisplayFor(model => model.PlanPricing)/@Html.DisplayFor(model => model.SubscriptionDuration)</del>
+                            </div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Price after offer
+                            <div style="font-size: 25px; color: #1c4980; text-align: center;">
+                                <b> ₹ @Html.DisplayFor(model => model.OfferedPrice)/@Html.DisplayFor(model => model.SubscriptionDuration)</b>
+                            </div>
+                        </dd>
+                       
+                        <dd>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <b> <span style='font-size: 25px;'>&#9733;&nbsp;Benefits</span> </b>
+                        </dd>
+                        <dd style="font-size: 20px; color: #1c4980; text-align: center; ">
+
+                            ✔@Html.DisplayFor(model => model.Benefits)
+                        </dd>
+
+
+
+
+
+                        @*<dd style="font-size:25px;color:black">
+                                @Html.DisplayFor(modelItem => item.Offer)
+                            </dd>
+                            <dd style="font-size:25px;color:black">
+                                @Html.DisplayFor(modelItem => item.OfferedPrice)/-
+                            </dd>*@
+                    </dl>
+
+
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        </dl>
+
+
+</div>

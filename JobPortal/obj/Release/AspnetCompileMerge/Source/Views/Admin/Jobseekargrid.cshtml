@@ -1,0 +1,76 @@
+﻿@model JobPortalLibrary.Admin.AdminUser
+
+@{
+    ViewBag.Title = "Jobseekargrid";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css"></script>
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+</head>
+<h2>Jobseekargrid</h2>
+
+<table class="table table-bordered table-striped mt-4 dt-responsive nowrap table-responsive" id="example" style="margin-left:300px;width:1000px;text-align:center">
+    <thead>
+        <tr style="background-color:royalblue">
+
+            <th style=" color: white;text-align:center">
+                @Html.DisplayNameFor(model => model.Seekercode)
+            </th>
+            <th style=" color: white;text-align:center">
+                @Html.DisplayNameFor(model => model.SeekerName)
+            </th>
+            <th style=" color: white;text-align:center">
+                @Html.DisplayNameFor(model => model.EmailId)
+            </th>
+            <th style=" color: white;text-align:center">
+                @Html.DisplayNameFor(model => model.ContactNo)
+            </th>
+            <th style=" color: white; text-align: center">
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th style=" color: white; text-align: center">
+                @Html.DisplayNameFor(model => model.SubscriptionDate)
+            </th>
+            <th style=" color: white; text-align: center">
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model.Users)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Seekercode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeekerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Designation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+<script>$(document).ready(function () {
+        $('#example').DataTable();
+    });</script>

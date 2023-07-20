@@ -1,0 +1,127 @@
+﻿@model JobPortalLibrary.Employer.EmployerUser
+@{
+    ViewBag.Title = "EmployeerIndex";
+    Layout = "~/Views/Shared/Employer_Layout.cshtml";
+}
+
+<html>
+<head>
+
+</head>
+<body>
+    <div class="row">
+        <div class="card" style="width:20%;box-shadow:5px 5px 5px 5px;text-align:center;">
+            <b><h5 style="margin-top: 15px;"> Total JobPost</h5></b>
+            <h2><span class="counter"><p>@ViewBag.count</p></span> </h2>
+        </div>
+        &nbsp; &nbsp; &nbsp; &nbsp;
+        <div class="card" style="width:20%;box-shadow:5px 5px 5px 5px;text-align:center;">
+            <b> <h5 style="margin-top: 15px;">  Total Application</h5></b>
+            <h2><span class="counter"><p>@ViewBag.applyjob</p></span> </h2>
+        </div>
+        &nbsp; &nbsp; &nbsp; &nbsp;
+        <div class="card" style="width:20%;box-shadow:5px 5px 5px 5px;text-align:center;">
+            <b><h5 style="margin-top: 15px;">  Total Interview</h5></b>
+
+            <h2><span class="counter"><p>@ViewBag.intv</p></span></h2>
+        </div>
+        &nbsp; &nbsp; &nbsp; &nbsp;
+        <div class="card" style="width:20%;box-shadow:5px 5px 5px 5px;text-align:center;">
+            <b><h5 style="margin-top: 15px;"> Total Hire</h5></b>
+
+            <h2><span class="counter"><p>@ViewBag.jbsk</p></span> </h2>
+        </div>
+
+    </div>
+
+    @*<div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="analytics-sparkle-line reso-mg-b-30">
+                    <div class="analytics-content">
+                        <b><h5> Total JobPost</h5></b>
+
+                        <h2><span class="counter"><p>@ViewBag.count</p></span> </h2>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="analytics-sparkle-line reso-mg-b-30">
+                    <div class="analytics-content">
+                        <b> <h5>  Total Application</h5></b>
+
+                        <h2><span class="counter"><p>@ViewBag.applyjob</p></span> </h2>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="analytics-sparkle-line reso-mg-b-30 table-mg-t-pro dk-res-t-pro-30">
+                    <div class="analytics-content">
+                        <b><h5> Total Interview</h5></b>
+
+                        <h2><span class="counter"><p>@ViewBag.intv</p></span></h2>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                <div class="analytics-sparkle-line table-mg-t-pro dk-res-t-pro-30">
+                    <div class="analytics-content">
+                        <b><h5> Total Hire</h5></b>
+
+                        <h2><span class="counter"><p>@ViewBag.jbsk</p></span> </h2>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <div id="graph">
+        <div id="chartContainer">
+            @*<p>dfghjklkjhgfd</p>*@
+        </div>
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+
+    window.onload = function () {
+        var chart = new CanvasJS.Chart("chartContainer", {
+            axisX: {
+                title: "JobCategory",
+            },
+            //axisY: {
+            //    title: "JobPosted",
+            //},
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            animationEnabled: true,
+		title:{
+            text: "JobCategory vs JobPosted",
+		},
+		data: [
+		{
+			// Change type to "doughnut", "line", "splineArea", etc.
+            name:"Job Posted",
+                type: "bar",
+                showInLegend: true,
+                color: "#435ebe",
+                indexLabel: "{lable}",
+                
+			dataPoints:@Html.Raw(ViewBag.listt),
+		}
+		]
+	});
+        chart.render();
+}
+</script>
+

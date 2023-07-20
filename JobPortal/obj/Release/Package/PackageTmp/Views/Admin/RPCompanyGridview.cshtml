@@ -1,0 +1,255 @@
+﻿@model JobPortalLibrary.Admin.AdminUser
+
+@{
+    ViewBag.Title = "RPCompanyGridview";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2 style="margin-left:300px"> CompanyGridview </h2>
+<html>
+<head style="margin-left:200px">
+
+    @*<link href="~/Content/Admin/plugins/tables/css/datatable/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/Admin/css/style.css" rel="stylesheet" />*@
+</head>
+<body>
+    @*Approvel SweetAlert*@
+    <script src="~/Scripts/Sweet.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".sweetApprove").click(function () {
+                var ReviewId = $(this).attr("data-id");
+                $.ajax({
+                    url: "/Admin/RPCompanyReviewStatusApprove/",
+                    data: { "ReviewId": ReviewId },
+                    success: function (Status) {
+                        swal({
+                            title: "This Company Review has been Approved..",
+                            button: "ok",
+                            // dangerMode: true,
+
+                        })
+                            .then(function () {
+                                window.location.href = "/Admin/RPCompanyGridview";
+                            })
+
+                    }
+                })
+            });
+        });
+    </script>
+
+    @*Reject SweetAlert*@
+    <script src="~/Scripts/Sweet.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".seewtreject").click(function () {
+                var ReviewId = $(this).attr("data-id");
+                $.ajax({
+                    url: "/Admin/RPCompanyReviewStatusReject/",
+                    data: { "ReviewId": ReviewId },
+                    success: function (Status) {
+                        swal({
+                            title: "This Company Review has been Approved..",
+                            button: "ok",
+                            // dangerMode: true,
+
+                        })
+                            .then(function () {
+                                window.location.href = "/Admin/RPCompanyGridview";
+                            })
+
+                    }
+                })
+            });
+        });
+    </script>
+
+
+
+    <style>
+        .fa fa-eye {
+            width: 50px;
+            height: 50px;
+            padding: 10px;
+            resize: block;
+        }
+    </style>    
+    <table class="table table-bordered table-striped mt-4 dt-responsive nowrap table-responsive" id="Rita" style="margin-left: 250px; width:1110px;">
+        <thead>
+            <tr style="background-color:royalblue;">
+                <th style=" text-align: center; color: white;">
+                    View
+                </th>
+
+                <th style="text-align: center; font-size: 15px; color: white;">
+                    @Html.HiddenFor(model => model.ReviewId)
+                </th>
+                <th style=" text-align: center; font-size: 15px; color: white;">
+                    @Html.DisplayNameFor(model => model.CompanyName)
+                </th>
+                <th style=" text-align: center; font-size: 15px; color: white;">
+                    @Html.DisplayNameFor(model => model.RegistrationDate)
+                </th>
+                <th style=" text-align: center; font-size: 15px; color: white;">
+                    @Html.DisplayNameFor(model => model.AboutCompany)
+                </th>
+                <th style=" text-align: center; font-size: 15px; color: white;">
+                    @Html.DisplayNameFor(model => model.Rating)
+                </th>
+                <th style=" text-align: center; font-size: 15px; color: white;">
+                    @Html.DisplayNameFor(model => model.Review)
+                </th>
+                <th style=" text-align: center; font-size: 15px; color: white;">
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th style="width: 200px; text-align: center; font-size: 15px; color: white;">
+                    Status
+                </th>
+
+
+               
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var item in Model.Users)
+            {
+                <tr style=" color: black">
+                    <td>
+
+
+                        <a class="btnfetch fa fa-eye" title="View" style="font-size:25px;color:blue;padding:10px 10px 10px 10px;"
+                           href="javascript:;" data-id="@item.ReviewId">
+                            @*<img src="~/Content/images/download.png" />*@👁
+                        </a>
+                    </td>
+
+                    <td>
+                        @Html.HiddenFor(modelItem => item.ReviewId)
+                        <a class="fa fa-trash" title="Delete" style="font-size:25px;color:red;" href="@Url.Action("RPCompanyIsDelete","Admin",new { ReviewId = @item.ReviewId })"> </a>
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CompanyName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AboutCompany)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Review)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+
+
+                    <td>
+
+                        <br />
+
+                        <button type="button" class="btn btn-success response border-success " style="background:white;">
+
+                            @*<i class="fa fa-check"></i>*@
+                            @*@Html.ActionLink(".", "RPCompanyReviewStatusApprove", new { ReviewId = item.ReviewId })*@
+                            <p style="font-size:20px;height:9px">
+                                <a class="sweetApprove" href="#" data-id=" @item.ReviewId">&#10004; </a>
+                            </p>
+                        </button>
+
+                        <button type="button" id="Reject" class="btn btn-success response border-danger" style="background:white">
+                            <p style="font-size:18px;height:9px;width:20px;">
+                                @*<i class="fa fa-times"></i>*@
+                                @*@Html.ActionLink(".", "RPCompanyReviewStatusReject", new { ReviewId = item.ReviewId })*@
+                                <a class="seewtreject" href="@Url.Action("RPCompanyReviewStatusReject","Admin",new { ReviewId = @item.ReviewId })"> &#10060; </a>
+
+                            </p>
+                        </button>
+
+                    </td>
+
+                    
+
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+    <div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" style="color:black; font-size:xx-large">AdminUser</h3>
+                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>*@
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".btnfetch").click(function () {
+                var $buttonClicked = $(this);
+                var id = $buttonClicked.attr('data-id')
+                /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+                $.ajax({
+                    type: "GET",
+                    url: "/Admin/RPCompanyGridviewDetails",
+                    data: { ReviewId: id },
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        $("#partialModal").find(".modal-body").html(response);
+                        $("#partialModal").modal('show');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).tooltip({
+                track: true
+            });
+        });
+    </script>
+
+
+    @*<script src="~/Content/Admin/plugins/tables/js/jquery.dataTables.min.js"></script>
+    <script src="~/Content/Admin/plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Content/Admin/plugins/tables/js/datatable-init/datatable-basic.min.js"></script>*@
+
+</body>
+
+</html>

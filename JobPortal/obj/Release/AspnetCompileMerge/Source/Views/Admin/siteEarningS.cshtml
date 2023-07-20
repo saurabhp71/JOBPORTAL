@@ -1,0 +1,189 @@
+﻿@model JobPortalLibrary.Admin.AdminUser
+
+@{
+    ViewBag.Title = "siteEarningS";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+&nbsp;&nbsp;
+<div class="content-body">
+
+    <div class="container-fluid mt-3">
+        <div class="row">
+            <div class="col-lg-3 col-sm-6">
+                <div class="card gradient-1" style="height:170px">
+                    <div class="card-body">
+                        <h3 class="card-title text-white">Total Earning</h3>
+                        <br />
+                        <div class="d-inline-block">
+                            <h2 class="text-white"><p>@ViewBag.TotalAmount</p></h2>
+                            <p class="text-white mb-0"></p>
+                        </div>
+                        <span class="float-right display-5 opacity-5"><i class="fa fa fa-money"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="card gradient-2" style="height:170px">
+                    <div class="card-body">
+                        <h3 class="card-title text-white"> Total Month Earning</h3>
+                        <br />
+                        <div class="d-inline-block">
+                            <h2 class="text-white"><p>@ViewBag.Currentmonth </p></h2>
+                            <p class="text-white mb-0"></p>
+                        </div>
+                        <span class="float-right display-5 opacity-5"><i class="fa fa fa-money"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    @*<div class="header-left" style="margin-left:100px;">
+        <div class="input-group icons">
+            <div class="input-group-prepend">
+                <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+            </div>
+            <input type="search" class="form-control" placeholder="Search " aria-label="Search ">
+            <div class="drop-down animated flipInX d-md-none">
+                <form action="#">
+                    <input type="text" class="form-control" placeholder="Search">
+                </form>
+            </div>
+        </div>
+    </div>*@
+    <br />
+    <br />
+    <table id="example" class="table table-bordered table-striped mt-4 dt-responsive nowrap table-responsive" style="margin-left: 80px; width: 900px; border: solid; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19); overflow: scroll;">
+        <thead>
+            <tr style="background-color:lavender; color: black;">
+                @*<th>
+                        Selectall<br />
+                        <input type="checkbox" id="selectall" class="css-checkbox " name="selectall" />
+
+                    </th>*@
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Seekercode)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.CompanyName)
+                    </th>*@
+
+                <th style="width:500px;">
+                    @Html.DisplayNameFor(model => model.SubscriptionName)
+
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.SubscriptionDuration)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Offer)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.PlanPricing)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OfferedPrice)
+                </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model.User)
+            {
+                <tr>
+                    @*<td class="checkbox">
+                            @Html.CheckBox("multiSelect", new { id = "multiselect", @class = "checkbox", Value = item.AppliedJobId })
+                        </td>*@
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Seekercode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubscriptionName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubscriptionDuration)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Offer)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlanPricing)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OfferedPrice)
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+    <br />
+    <br />
+
+    @*<div class="content-body">
+
+        <div class="container-fluid mt-3">
+            <div class="row">
+                <div class="col-lg-3 col-sm-6">
+                    <div class="card gradient-1" style="height:170px">
+                        <div class="card-body">
+                            <h3 class="card-title text-white">Total Amount</h3>
+                            <br />
+                            <div class="d-inline-block">
+                                <h2 class="text-white"><p>@ViewBag.TotalAmount </p></h2>
+                                <p class="text-white mb-0"></p>
+                            </div>
+                            <span class="float-right display-5 opacity-5"><i class="fa fa fa-money"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.js" rel="stylesheet"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js" rel="stylesheet"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/dataTables.buttons.min.js" rel="stylesheet"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" rel="stylesheet"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js" rel="stylesheet"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" rel="stylesheet"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.html5.min.js" rel="stylesheet"></script>
+<script src="https://cdn.datatables.net/buttons/2.3.2/js/buttons.print.min.js" rel="stylesheet"></script>
+<script src="" rel="stylesheet"></script>
+
+
+
+
+
+
+
+
+
+
+<script>$(document).ready(function () {
+            $('#example').DataTable({
+                dom: 'Bfrtip',
+
+                buttons: [
+                    {
+                        extend: 'excelHtml5',
+                        text: '<span style="font-size: 1.3em; font-weight: bold;" ><i class="fa fa-file-excel-o"style="font-weight: bold; color: Green"></i>&nbsp;&nbsp;&nbsp;Excel</span>',
+                        titleAttr: 'Excel'
+                    },
+
+                    {
+                        extend: 'pdfHtml5',
+                        text: '<span style="font-size: 1.3em; font-weight: bold;" ><i class="fa fa-file-pdf-o"style="font-weight: bold; color: red"></i>&nbsp;&nbsp;&nbsp;Pdf</span>',
+                        titleAttr: 'PDF'
+                    }
+
+                ]
+            });
+        });</script>

@@ -1,0 +1,63 @@
+﻿@model JobPortalLibrary.Admin.AdminUser
+
+@{
+    ViewBag.Title = "RPAdminJobsGrid";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<h2>RPAdminJobsGrid</h2>
+
+<p> 
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered table-striped mt-4 dt-responsive nowrap table-responsive" id="example" style="margin-left: 280px; width: 1000px; border: solid">
+    <tr style="background-color:royalblue;">
+
+
+        <th style="width: 250px; text-align: center;font-size:15px;color:white;">
+            @Html.DisplayNameFor(model => model.JobTitle)   
+        </th>
+        <th style="width: 200px; text-align: center; font-size: 15px; color: white;">
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th style="width: 200px; text-align: center; font-size: 15px; color: white;">
+            @Html.DisplayNameFor(model => model.applicationcount)
+        </th>
+        <th style="width: 150px; text-align: center; font-size: 15px; color: white;">
+            @Html.DisplayNameFor(model => model.Hire)
+        </th>
+        <th style="width: 200px; text-align: center; font-size: 15px; color: white;">
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        @*<th></th>*@
+    </tr>
+
+@foreach (var item in Model.Users) 
+{
+    <tr>
+
+        <td style="text-align: center">
+            @Html.DisplayFor(modelItem => item.JobTitle)
+        </td>
+        <td style="text-align: center;">
+            @Html.DisplayFor(modelItem => item.CompanyName)
+        </td>
+        <td style="text-align: center;">
+            @Html.DisplayFor(modelItem => item.applicationcount)
+        </td>
+        <td style="text-align: center;">
+            @Html.DisplayFor(modelItem => item.Hire)
+        </td>
+
+        <td style="text-align: center;">
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+    </tr>
+}
+
+</table>

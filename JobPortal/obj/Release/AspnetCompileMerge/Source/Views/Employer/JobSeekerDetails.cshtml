@@ -1,0 +1,200 @@
+﻿@model JobPortalLibrary.Employer.EmployerUser
+
+<div>
+    @*<h4 class="modal-header">JobSeekarDetails</h4>
+    <hr />*@
+    <style>
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            background-color: white;
+            margin: auto;
+            padding: 0;
+            border: 1px solid #888;
+            width: 100%;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+            -webkit-animation-name: animatetop;
+            -webkit-animation-duration: 0.4s;
+            animation-name: animatetop;
+            animation-duration: 0.4s
+        }
+        /* Add Animation */
+        -webkit-keyframes animatetop {
+            from
+
+        {
+            top: -300px;
+            opacity: 0
+        }
+
+        to {
+            top: 0;
+            opacity: 1
+        }
+
+        }
+
+        keyframes animatetop {
+            from
+
+        {
+            top: -300px;
+            opacity: 0
+        }
+
+        to {
+            top: 0;
+            opacity: 1
+        }
+
+        }
+        .modal-header {
+            padding: 16px 45px;
+            font-size:30px;
+            background-color:cadetblue;
+            color: black;
+        }
+
+        .modal-body {
+            padding: 2px 16px;
+        }
+
+        .modal-footer {
+            padding: 2px 16px;
+            background-color: cadetblue;
+            color: white;
+        }
+    </style>
+
+
+
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Seekercode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seekercode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SeekerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SeekerName)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.Profilesummary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Profilesummary)
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayNameFor(model => model.ResumePDF)
+        </dt>
+
+        <dd>
+            <p><a style="font-size:30px" href="~/Content/Resume Pdf/@ViewBag.ResumePDF" class="bi bi-download" target="_blank"></a></p>
+        </dd>
+        <br />
+        <dt>
+            <label>Message</label>
+            <br />
+            <input type="text" name="message" style="height:70px;width:350px;" class="message" />
+        </dt>
+    </dl>
+</div>
+                  <p>
+                        @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+                            @Html.ActionLink("Back to List", "Index")*@
+                        @*<label>Interested ?</label>*@
+
+                        <button type="button" id="SendMail" class="btn btn-success response" >
+                            <a class="SendMail" href="#" data-id="@Model.Seekercode" style="color:white;">Send Mail</a>
+                        </button>
+
+                        @*<button type="button" id="Hold" class="btn btn-quest response" style="background-color:gold">
+                            <a class="Hold" href="#" data-id="@Model.Seekercode"> &#63 </a>
+                        </button>
+
+                        <button type="button" id="Reject" class="btn btn-danger response">
+                            <a class="Reject" href="#" data-id="@Model.Seekercode"> &#10005 </a>
+                        </button>*@
+                    </p>
+
+
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            $(".SendMail").click(function () {
+                                var Seekercode = $(this).attr("data-id");
+                                var message = $(".message").val();
+                               /* var message = $(this).attr("value");*/
+                                $.ajax({
+                                    url: "/Employer/UpdateApporval/",
+                                    data: { "Seekercode": Seekercode, "message": message },
+                                    success: function (Status) {
+                                        if (Status.data == "SendMail") {
+                                            Swal.fire({
+                                                position: 'center',
+                                                icon: 'success',
+                                                title: 'Email send It!!!',
+                                                showConfirmButton: false,
+                                                timer: 2000
+                                            })
+                                                .then(function () {
+                                                    window.location.href = "/Employer/FindResume/";
+                                                })
+                                        }
+                                    }
+                                });
+                            });
+                            $(".Hold").click(function () {
+                                var Seekercode = $(this).attr("data-id");
+                                $.ajax({
+                                    url: "/Employer/UpdateHold/",
+                                    data: { "Seekercode": Seekercode },
+                                    success: function (Status) {
+                                        if (Status.data == "Hold") {
+                                            Swal.fire({
+                                                title: 'Your Resume is Hold!!!',
+                                                icon: 'question',
+                                                iconHtml: '?',
+                                                timer: 2000,
+                                                confirmButtonText: 'Ok',
+                                                showConfirmButton: false,
+                                            })
+                                                .then(function () {
+                                                    window.location.href = "/Employer/FindResume/";
+                                                })
+                                        }
+                                    }
+                                });
+                            });
+                            $(".Reject").click(function () {
+                                var Seekercode = $(this).attr("data-id");
+                                $.ajax({
+                                    url: "/Employer/UpdateRejected/",
+                                    data: { "Seekercode": Seekercode },
+                                    success: function (Status) {
+                                        if (Status.data == "Reject") {
+                                            Swal.fire({
+                                                position: 'center',
+                                                icon: 'error',
+                                                title: 'Your Resume is Rejected!!!',
+                                                showConfirmButton: false,
+                                                timer: 2000
+                                            })
+                                                .then(function () {
+                                                    window.location.href = "/Employer/FindResume/";
+                                                })
+                                        }
+                                    }
+                                });
+                            });
+                        });
+                    </script>

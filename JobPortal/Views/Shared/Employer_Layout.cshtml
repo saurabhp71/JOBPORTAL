@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+
+    @Scripts.Render("~/bundles/jquery")
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.6.2/chosen.min.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/vendors/iconly/bold.css">
+
+    <link rel="stylesheet" href="~/Content/vendors/perfect-scrollbar/perfect-scrollbar.css">
+
+    <link href="~/Content/vendors/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="~/Content/css/app.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/Content/images/favicon.svg" type="image/x-icon">
+
+    <link href="~/Content/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+</head>
+<body>
+
+
+    <div id="app">
+        
+            <div id="sidebar" class="active">
+                <div class="sidebar-wrapper active">
+                    <div class="sidebar-header">
+                        <div class="d-flex justify-content-between">
+                            <div class="logo">
+                                @*<a href="index.html"><img src="~/Content/images/logo/logo.png" alt="Logo" srcset=""></a>*@
+                                <b>Job Portal</b>
+                            </div>
+                            <div class="toggler">
+                                <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @if (Session["Employercode"] != null)
+                    {
+                        <h5 class="m-b-20"><strong>&nbsp;&nbsp;&nbsp; @Session["EmployerName"].ToString()</strong></h5>
+                    }
+                    else
+                    {
+                        @*<h1 class="m-b-20"><strong>Welcome to<br> JobPortal</strong></h1>*@
+                    }
+                    <div class="sidebar-menu">
+                        <ul class="menu">
+                            <li class="sidebar-title">Menu</li>
+
+                            <li class="sidebar-item active ">
+                                <a href="@Url.Action("EmployeerIndex","Employer")" class='sidebar-link'>
+                                    @*<i class="bi bi-grid-fill"></i>*@
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li class="sidebar-item  ">
+                                <a href="@Url.Action("KTCompanyDeatilsGV","Employer")" class='sidebar-link'>
+                                    @*<i class="bi bi-stack"></i>*@
+                                    <i class="bi bi-pencil-square"></i>
+                                    <span>Company Registration</span>
+                                </a>
+
+                            </li>
+
+                            <li class="sidebar-item ">
+                                <a href="@Url.Action("jobgrid","Employer")" class='sidebar-link'>
+                                    <i class="bi bi-stack"></i>
+                                    <span>Manage Posted Job</span>
+                                </a>
+
+                            </li>
+
+
+                            <li class="sidebar-item  ">
+                                <a href="@Url.Action("FindResume","Employer")" class='sidebar-link'>
+                                    @*<i class="bi bi-grid-1x2-fill"></i>*@
+                                    <i class="bi bi-search"></i>
+                                    <span>Find Candidates</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  ">
+                                <a href="@Url.Action("ResumeAlert","Employer")" class='sidebar-link'>
+                                    @*<i class="bi bi-grid-1x2-fill"></i>*@
+                                    <i class="bi bi-bell"></i>
+                                    <span>Candidates Alert</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  ">
+                                <a href="@Url.Action("AccountEmployer","Employer")" class='sidebar-link'>
+                                    @*<i class="fas fa-user-edit"></i>*@
+                                    <i class="bi bi-gear"></i>
+                                    <span>Account Setting</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  ">
+                                <a href="@Url.Action("PlanDetails","Employer")" class='sidebar-link'>
+                                    @*<i class="fa fa-cog"></i>*@
+                                    <i class="bi bi-tag" style="font-size:20px;"></i>
+                                    <span>Subcriptions</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item  ">
+                                <a href="@Url.Action("RPBilling","Employer")" class='sidebar-link'>
+                                   $
+                                    <span>Payment History</span>
+                                </a>
+                            </li>
+                            @*<li class="sidebar-item  ">
+                                <a href="@Url.Action("DeleteEmployer","Employer")" class='sidebar-link'>
+                                    <i class="fa fa-cog"></i>
+                                    <span>Delete Account</span>
+                                </a>
+                            </li>*@
+
+                            <li class="sidebar-item  ">
+                                <a href="@Url.Action("Logout","Employer")" class='sidebar-link'>
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </li>
+
+
+
+
+
+
+                        </ul>
+                    </div>
+                    <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
+                </div>
+            </div>
+            <div id="main">
+              
+            
+
+            @RenderBody()
+
+            <footer>
+                <div class="footer clearfix mb-0 text-muted">
+
+                    <div class="float-end">
+                        <p>
+                            All Rights Reserved.&copy;2023 Gaya Software & Technology.
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="~/Content/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+
+
+    <script src="~/Content/vendors/apexcharts/apexcharts.js"></script>
+    <script src="~/Content/js/pages/dashboard.js"></script>
+
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+
+    <script src="~/Content/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Content/js/main.js"></script>
+    @*<script src="~/Scripts/jquery-3.4.1.min.js"></script>*@
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#ashish,#example").dataTable(
+                {
+                    "lengthMenu": [10, 20, 40, 60, 80],
+                    "dom": '<"dt-buttons"Bfli>rtp',
+                    "paging": true, 
+                    "autoWidth": false,
+                    "fixedHeader": true,
+
+                });
+
+
+        });
+    </script>
+   
+
+
+
+
+
+</body>
+</html>

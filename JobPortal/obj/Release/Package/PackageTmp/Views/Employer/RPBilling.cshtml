@@ -1,0 +1,101 @@
+﻿@model JobPortalLibrary.Employer.EmployerUser
+@{
+    ViewBag.Title = "RPBilling";
+    Layout = "~/Views/Shared/Employer_Layout.cshtml";
+}
+
+@*<h1 style="margin-left:100px;">Billing History</h1>*@
+<html>
+<head>
+    <style>
+        @@media print{
+            #btnprint,
+            #footer,
+            #header,
+            #app {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    @if (Model != null)
+
+    {
+        foreach (var item in @Model.Users)
+        {
+
+            <div class="card d-flex dynamic-card mb-5" style="width: 60rem; height: 600px; margin-left:0%; border-radius: 10px; box-shadow: 5px 6px 8px 5px lightgrey;background-color:aliceblue">
+                <table id="tblGrid" style="text-align:left; margin-left:50px">
+                    <thead>
+                        <tr>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                @Html.HiddenFor(modelItem => item.Employercode)
+                            </td>
+                            <td style="font-size:25px; text-align:left;">
+                                <h1 style="margin-left:280px"> Payment Reciept</h1>
+                                <hr />
+                                <h4>Billing Contact : </h4>
+
+                                <img class="img-seeker" src="~/Content/images/@item.CompanyLogo" style="width:150px; height:150px;margin-left:700px" />
+                                <br />
+                                <br />
+
+                                <div style=" margin-left:100px;margin-top:-180px">
+                                    <label>CompanyName</label>:&nbsp;&nbsp;<a style="margin-left:50px">@item.CompanyName</a>
+                                    <br />
+                                    <label>Contact No</label>: &nbsp;&nbsp; <a style="margin-left:75px">@item.ContactNo</a>
+                                    <br />
+                                    <label>EmailId</label>: &nbsp;&nbsp; <a style="margin-left:110px">@item.EmailId</a>
+                                    <br />
+                                </div>
+                                <h4>Billing Address : </h4>
+                                <div style=" margin-left:100px;margin-top:30px">
+                                    <label>Address</label>: &nbsp;&nbsp; <a style="margin-left:100px;"> @item.Address</a>
+                                    <br />
+                                    <label>HRName</label>: &nbsp;&nbsp;<a style="margin-left:95px">@item.HRName</a>
+                                    <br />
+                                    <label>CompanyEmail</label>: &nbsp;&nbsp;<a style="margin-left:28px"> @item.CompanyEmail</a>
+                                    <br />
+                                    <label>SubscriptionDate</label>: &nbsp;&nbsp;<a style="margin-left:10px"> @item.SubscriptionDate</a>
+                                    <br />
+                                    <label>Plans</label>: &nbsp;&nbsp;<a style="margin-left:140px">@item.SubscriptionName</a>
+                                    <br />
+                                    <label>PlanPrice</label>: &nbsp;&nbsp; <a style="margin-left:90px">@item.PlanPricing/-</a>
+                                </div>
+                              
+                             
+                                <div  style=" margin-left:700px; margin-top:-30px">
+                                    <button type="button" id="btnprint" class="btn btn-primary" style="background-color:mediumblue; width:90px;height:30px;"> <a style="color:white; font-size:15px;" href="javascript:window.print()">Print</a></button>
+                                </div>
+                            </td>
+
+                            @*<td style="font-size:25px; font-style:oblique">
+                    @Html.ActionLink("Show", "RPBilling", new { Employercode = item.Employercode })
+                </td>*@
+                            @*<div style="margin-right:100px">
+                   <td>
+                       <button type="button" id="btnprint" class="btn btn-primary" style="background-color:mediumblue; width:30px;height:25px;"> <a style="color:white" href="javascript:window.print()">Print</a></button>
+                   </td>
+                </div>*@
+
+                        </tr>
+
+                    </tbody>
+                  
+
+                </table>
+            </div>
+            <br />
+            <br />
+        }
+    }
+
+
+
+</body>
+</html>

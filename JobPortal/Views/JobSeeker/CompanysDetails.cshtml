@@ -1,0 +1,220 @@
+﻿@model JobPortalLibrary.JobSeeker.SeekerUser
+
+@{
+    ViewBag.Title = "CompanysDetails";
+    Layout = "~/Views/Shared/JobSeeker_Layout.cshtml";
+}
+
+
+<style>
+    .tabprofile {
+        height: 500px;
+        padding: 80px;
+
+    }
+
+    .profile-image {
+        padding: 10px;
+    }
+
+    .img-seeker {
+        background-image: url('../../content/images/companylogo1.jpg');
+        background-position: center;
+        background-size: 80px;
+    }
+
+    .company {
+        margin-left: 145px;
+        margin-top: -125px;
+        display: flex
+    }
+
+    .checked {
+        color: gold;
+    }
+
+    .follow-user {
+        font-size: 20px;
+        border: 0;
+        width: 120px;
+        height: 40px;
+        border-radius: 20px;
+        background-color: #457eff;
+        color: floralwhite;
+    }
+    .review {
+        font-size: 20px;
+        border: 0;
+        width: 120px;
+        height: 40px;
+        border-radius: 20px;
+        background-color: gold;
+        color: floralwhite;
+    }
+</style>
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+            $(".follow-user").click(function () {
+                var $buttonClicked = $(this);
+                var json = $buttonClicked.attr('data-id')
+
+                $.ajax({
+                    type: 'POST',
+                    url: "/JobSeeker/FollowCompany",
+                    dataType: "json",
+                    data: { "Companyid": json },
+                    success: function (data) {
+                        if (data.status == "true") {
+                            //swal({
+                            //    title: data.msg,
+                            //    icon: "success",
+                            //    button: "Ok",
+                            //});
+                            $(".follow-user").css("background-color", "#e8f9f6");
+                            $(".follow-user").css("color", "#18c1a3")
+                            $(".follow-user").attr("value", "Following");
+
+                        }
+                        if (data.status == "false") {
+
+                            //swal({
+                            //    title: data.msg,
+                            //    icon: "success",
+                            //    button: "Ok",
+                            //});
+                            $(".follow-user").css("background-color", "#457eff");
+                            $(".follow-user").attr("value", "+ Follow");
+                            $(".follow-user").css("color", "#fff")
+                        }
+                    },
+                    error: function (result) {
+                        swal({
+                            title: "You Need To Login",
+                            icon: "warning",
+                            button: "Ok",
+                        }).then(function () {
+                            window.location.href = "/Account/Register";
+                        })
+                    }
+                });
+            });
+        });
+
+        $(function () {
+            $(".review").click(function () {
+                var $buttonClicked = $(this);
+                var id = $buttonClicked.attr('data-id')
+                /* var id = $(this).closest("tr").find("td").eq(0).html();*/
+                $.ajax({
+                    type: "POST",
+                    url: "/JobSeeker/ReviewCompanyFeedback",
+                    data: '{CompanyId: "' + id + '" }',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "html",
+                    success: function (response) {
+                        $("#partialModal").find(".modal-body").html(response);
+                        $("#partialModal").modal('show');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+
+
+
+<div class="tabprofile">
+    <div class="card" style="width:65rem;height:500px; margin-left:60px;border-radius:10px;box-shadow: 20px 10px 10px lightgrey">
+
+
+        <dl class="dl-horizontal" style=" margin-left:30px;margin-top:10px">
+            <div class="profile-image">
+                <dd style="font-size:22px;color:black">
+                    @Html.HiddenFor(modelItem => Model.CompanyId)
+                    @Html.HiddenFor(modelItem => Model.EmployerCode)
+                </dd>
+                <dd style="font-size:25px;color:black">
+                    <img class="img-seeker" src="~/Content/images/@Model.CompanyLogo" height="100" width="100">
+                </dd>
+            </div>
+            <div class="company">
+                <dd style="font-size:40px;color:black">
+                    @Html.DisplayFor(modelItem => Model.CompanyName)
+                </dd>
+
+                <dd style="margin-top:20px;margin-left:10px;">
+                    <i class="fa fa-star checked"></i> @Html.DisplayFor(modelItem => Model.Rating) |
+                    @Html.DisplayFor(modelItem => Model.Follow) reviews
+                </dd>
+            </div>
+            <dd style="margin-left:715px;margin-top:-20px;">
+                <span id="sp-@Model.CompanyId"><input data-id="@Model.CompanyId" name="submit" type="submit" value="+ Follow" class="follow-user fg-button ui-state-default" /></span>
+                <span id="sp-@Model.CompanyId"><input data-id="@Model.CompanyId"href="javascript:void(0);"  name="submit" type="submit" value="Review" class="review" /></span>
+                @*<a style="display: flex;align-items: center; justify-content: center" href="javascript:void(0);" class="review" data-id="@Model.CompanyId">Review</a>*@
+            </dd>
+            <dd style="font-size: 17px; color: darkslategray;margin-top:-30px;margin-left:140px">
+                @Html.DisplayFor(modelItem => Model.Slogan)
+            </dd>
+            <div class="About">
+                <label for="html" style="color: black;margin-left:10px;margin-top:40px;font-size:22px; ">About Company</label>
+                <dd style="font-size: 17px; color: darkslategray;margin-top:2px;margin-left:10px">
+                    @Html.DisplayFor(modelItem => Model.AboutCompany)
+                </dd>
+            </div>
+            <div class="More">
+                <label for="html" style="color: black;margin-left:35px;margin-top:40px;font-size:18px; ">More Information</label>
+                <dd style="font-size: 14px; color: darkslategray;margin-top:2px;margin-left:40px">
+                    @Html.LabelFor(modelItem => Model.NoOfEmployees, "Company Size:")
+                    @Html.DisplayFor(modelItem => Model.NoOfEmployees)
+                </dd>
+                <dd style="font-size: 14px; color: blue;margin-top:2px;margin-left:40px">
+                    <label for="html" style="color: darkslategray; ">Company Website:</label>
+                    @Html.DisplayFor(modelItem => Model.CompanyWebsite)
+                </dd>
+            </div>
+        </dl>
+
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        var id = $(".follow-user").attr("data-id");
+        $.get("/JobSeeker/FollowCompany1", { companyid: id }, function (data) {
+            if (data.data == "True") {
+                $(".follow-user").css("background-color", "#e8f9f6")
+                $(".follow-user").css("color", "#18c1a3")
+                $(".follow-user").attr("value", "Following");
+
+            }
+            else {
+                $(".follow-user").css("background-color", "#457eff")
+                $(".follow-user").attr("value", "+ Follow");
+                $(".follow-user").css("color", "#fff")
+            }
+        })
+    })
+</script>
+<div id="partialModal" class="modal" tabindex="-1" role="dialog" style="position:center">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header"></div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
